@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "123", password: "123", except: [:index, :show]
+  http_basic_authenticate_with name: '123', password: '123', except: %i[index show]
 
   def index
     @articles = Article.all
   end
+
   def index
     @articles = Article.all
   end
@@ -48,6 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :body, :status)
   end
